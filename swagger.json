@@ -7,15 +7,58 @@
 	},
     "tags": [
         {
+            "name": "Autenticação",
+            "description": "Rota relacionada ao login"
+        },
+        {
             "name": "Usuario",
             "description": "Rotas relacionadas ao usuário"
         },
         {
             "name": "Evento",
             "description": "Rotas relacionadas ao evento"
+        },
+        {
+            "name": "Ingresso",
+            "description": "Rotas relacionadas ao ingresso"
         }
     ],
 	"paths": {
+        "/v1/session": {
+            "post": {
+                "description": "Autenticação do usuario",
+                "tags": ["Autenticação"],
+                "requestBody": {
+                    "required": true,
+                    "description": "Credenciais necessarias para login",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestAuthUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario autenticado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseAuthUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos"
+                    },
+                    "401": {
+                        "description": "Senha ou email invalido"
+                    }
+                }
+            }
+        },
         "/v1/user": {
             "post": {
                 "description": "Criação do usuario",
@@ -44,41 +87,6 @@
                     },
                     "400": {
                         "description": "Dados inválidos"
-                    }
-                }
-            }
-        },
-        "/v1/session": {
-            "post": {
-                "description": "Autenticação do usuario",
-                "tags": ["Usuario"],
-                "requestBody": {
-                    "required": true,
-                    "description": "Credenciais necessarias para login",
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/RequestAuthUser"
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Usuario autenticado com sucesso",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ResponseAuthUser"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Dados incompletos"
-                    },
-                    "401": {
-                        "description": "Senha ou email invalido"
                     }
                 }
             }
