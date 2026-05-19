@@ -1,6 +1,6 @@
 import prismaClient from "../../prisma";
 
-class DeleteUserService {
+class DeleteEventoService {
     async execute (id: string) {
         return prismaClient.evento.delete({
             where: {
@@ -10,4 +10,4 @@ class DeleteUserService {
     }
 }
 
-export { DeleteUserService }
+export { DeleteEventoService }
