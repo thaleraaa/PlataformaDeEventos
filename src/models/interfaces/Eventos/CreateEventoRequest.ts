@@ -1,6 +1,6 @@
 export interface CreateEventoRequest {
     nome: string;
-    data: Date;
+    data: string;
     horario: string;
     valor: number;
     user_id: string;

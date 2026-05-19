@@ -10,6 +10,7 @@ import { DeleteUserController } from "./controllers/User/DeleteUserController";
 import { CreateEventoController } from "./controllers/Eventos/CreateEventoController";
 import { DetailEventoController } from "./controllers/Eventos/DetailEventoController";
 import { DeleteEventoController } from "./controllers/Eventos/DeleteEventoController";
+import { EditEventoController } from "./controllers/Eventos/EditEventoController";
 
 const router = Router();
 const upload = multer(uploadConfig.upload("./tmp"));
@@ -29,7 +30,7 @@ router.delete('/user/remove', isAuthenticated, new DeleteUserController().handle
 // Evento Routes
 router.post('/evento', isAuthenticated, new CreateEventoController().handle);
 router.get('/evento', isAuthenticated, new DetailEventoController().handle);
-router.put('/evento/edit', isAuthenticated, new EditUserController().handle);
+router.put('/evento/edit', isAuthenticated, new EditEventoController().handle);
 router.delete('/evento/remove', isAuthenticated, new DeleteEventoController().handle);
 
 export { router };

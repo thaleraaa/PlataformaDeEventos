@@ -33,7 +33,7 @@ model Usuario {
 model Evento {
   id String @id @default(uuid())
   nome String
-  data DateTime
+  data String
   horario String
   valor Float
 

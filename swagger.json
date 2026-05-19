@@ -248,13 +248,26 @@
                         "description": "Não autorizado"
                     }
                 }
-            },
+                }
+        },
+        "/v1/evento/edit": {
             "put": {
                 "description": "Atualização dos dados do evento",
                 "tags": ["Evento"],
                 "security": [
                     {
                         "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "description": "Id do evento",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -430,7 +443,7 @@
                     },
                     "data": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date"
                     },
                     "horario": {
                         "type": "string"
@@ -442,17 +455,14 @@
             },
             "RequestEditEvento": {
                 "type": "object",
-                "required": ["id", "nome", "data", "horario", "valor"],
+                "required": ["nome", "data", "horario", "valor"],
                 "properties": {
-                    "id": {
-                        "type": "string"
-                    },
                     "nome": {
                         "type": "string"
                     },
                     "data": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date"
                     },
                     "horario": {
                         "type": "string"
@@ -473,7 +483,7 @@
                     },
                     "data": {
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date"
                     },
                     "horario": {
                         "type": "string"

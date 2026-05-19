@@ -1,7 +1,7 @@
 export interface EditEventoRequest {
     id: string;
     nome: string;
-    data: Date;
+    data: string;
     horario: string;
     valor: number;
 }

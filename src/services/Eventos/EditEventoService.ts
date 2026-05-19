@@ -19,6 +19,8 @@ class EditEventoService {
             }
         })
 
+        return evento;
+
     }
 }
 
