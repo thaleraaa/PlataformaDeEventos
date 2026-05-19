@@ -7,6 +7,10 @@ import { isAuthenticated } from "./middlewares/isAuthenticated";
 import { DetailUserController } from "./controllers/User/DetailUserController";
 import { EditUserController } from "./controllers/User/EditUserController";
 import { DeleteUserController } from "./controllers/User/DeleteUserController";
+import { CreateEventoController } from "./controllers/Eventos/CreateEventoController";
+import { DetailEventoController } from "./controllers/Eventos/DetailEventoController";
+import { DeleteEventoController } from "./controllers/Eventos/DeleteEventoController";
+import { EditEventoController } from "./controllers/Eventos/EditEventoController";
 
 const router = Router();
 const upload = multer(uploadConfig.upload("./tmp"));
@@ -21,5 +25,12 @@ router.post('/session', new AuthUserController().handle);
 router.get('/user/me', isAuthenticated, new DetailUserController().handle);
 router.put('/user/edit', isAuthenticated, new EditUserController().handle);
 router.delete('/user/remove', isAuthenticated, new DeleteUserController().handle);
+
+
+// Evento Routes
+router.post('/evento', isAuthenticated, new CreateEventoController().handle);
+router.get('/evento', isAuthenticated, new DetailEventoController().handle);
+router.put('/evento/edit', isAuthenticated, new EditEventoController().handle);
+router.delete('/evento/remove', isAuthenticated, new DeleteEventoController().handle);
 
 export { router };
