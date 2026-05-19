@@ -3,7 +3,7 @@ import { FindByUserIngressoService } from "../../services/Ingresso/FindByUserIng
 
 class FindByUserIngressoController {
     async handle (request: Request, response: Response) {
-        const user_id = request?.query.user_id as string;
+        const user_id = request?.user_id;
         const findByUserIngressoService = new FindByUserIngressoService();
         const ingressos = await findByUserIngressoService.execute(user_id);
         return response.status(200).json(ingressos);

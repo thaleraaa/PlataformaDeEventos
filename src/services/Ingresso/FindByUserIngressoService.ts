@@ -9,6 +9,9 @@ class FindByUserIngressoService {
         return prismaClient.ingresso.findMany({
             where: {
                 user_id: user_id
+            },
+            include: {
+                evento: true
             }
         });
     }
