@@ -9,6 +9,10 @@
         {
             "name": "Usuario",
             "description": "Rotas relacionadas ao usuário"
+        },
+        {
+            "name": "Evento",
+            "description": "Rotas relacionadas ao evento"
         }
     ],
 	"paths": {
@@ -170,6 +174,156 @@
                     }
                 }
             }
+        },
+        "/v1/evento": {
+            "post": {
+                "description": "Criação do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para criação do evento",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestCreateEvento"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Evento criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            },
+            "get": {
+                "description": "Detalhes do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "description": "Id do evento",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Evento encontrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            },
+            "put": {
+                "description": "Atualização dos dados do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para editar o evento",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestEditEvento"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Evento atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/evento/remove": {
+            "delete": {
+                "description": "Remoção do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "description": "Id do evento",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Evento removido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -263,6 +417,79 @@
                         "enum": ["CLIENTE", "ADMINISTRADOR"]
                     },
                     "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestCreateEvento": {
+                "type": "object",
+                "required": ["nome", "data", "horario", "valor"],
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "horario": {
+                        "type": "string"
+                    },
+                    "valor": {
+                        "type": "number"
+                    }
+                }
+            },
+            "RequestEditEvento": {
+                "type": "object",
+                "required": ["id", "nome", "data", "horario", "valor"],
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "horario": {
+                        "type": "string"
+                    },
+                    "valor": {
+                        "type": "number"
+                    }
+                }
+            },
+            "ResponseEvento": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "horario": {
+                        "type": "string"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "user_id": {
                         "type": "string"
                     }
                 }
