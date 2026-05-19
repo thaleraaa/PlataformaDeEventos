@@ -258,6 +258,28 @@
                 }
                 }
         },
+        "/v1/eventos": {
+            "get": {
+                "tags": ["Evento"],
+                "description": "Detalhe de todos os eventos disponiveis",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/v1/evento/edit": {
             "put": {
                 "description": "Atualização dos dados do evento",
@@ -592,8 +614,39 @@
                         "type": "string"
                     }
                 }
-            }
-            ,
+            },
+            "ResponseEventos": {
+                "type": "array",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "horario": {
+                        "type": "string"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "user_id": {
+                        "type": "string"
+                    }
+                }
+            },
             "RequestCreateIngresso": {
                 "type": "object",
                 "required": ["qrcode"],
