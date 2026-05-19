@@ -5,5 +5,83 @@
 		"version": "1.0.0",
 		"description": "Documentação inicial da API."
 	},
-	"paths": {}
+	"paths": {
+        "/v1/user": {
+            "post": {
+                "description": "Criação do usuario",
+                "tags": ["Usuario"],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para criação do usuario",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestCreateUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseCreateUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "RequestCreateUser": {
+                "type": "object",
+                "required": ["nome", "email", "senha"],
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseCreateUser": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": ["CLIENTE", "ADMINISTRADOR"]
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        }
+    }
 }
