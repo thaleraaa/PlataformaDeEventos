@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express, { Request, Response, NextFunction } from "express";
 import cors from 'cors'
 import swawaggerUi from "swagger-ui-express"; 
