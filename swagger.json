@@ -5,6 +5,12 @@
 		"version": "1.0.0",
 		"description": "Documentação inicial da API."
 	},
+    "tags": [
+        {
+            "name": "Usuario",
+            "description": "Rotas relacionadas ao usuário"
+        }
+    ],
 	"paths": {
         "/v1/user": {
             "post": {
@@ -27,7 +33,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/ResponseCreateUser"
+                                    "$ref": "#/components/schemas/ResponseUser"
                                 }
                             }
                         }
@@ -37,9 +43,143 @@
                     }
                 }
             }
+        },
+        "/v1/session": {
+            "post": {
+                "description": "Autenticação do usuario",
+                "tags": ["Usuario"],
+                "requestBody": {
+                    "required": true,
+                    "description": "Credenciais necessarias para login",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestAuthUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario autenticado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseAuthUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos"
+                    },
+                    "401": {
+                        "description": "Senha ou email invalido"
+                    }
+                }
+            }
+        },
+        "/v1/user/me": {
+            "get": {
+                "description": "Detalhes do usuario autenticado",
+                "tags": ["Usuario"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario encontrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseUser"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/user/edit": {
+            "put": {
+                "description": "Atualização dos dados do usuario autenticado",
+                "tags": ["Usuario"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para editar o usuario",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestEditUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Os dados não podem estar vazios"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/user/remove": {
+            "delete": {
+                "description": "Remoção do usuario autenticado",
+                "tags": ["Usuario"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario removido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseUser"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
         }
     },
     "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
         "schemas": {
             "RequestCreateUser": {
                 "type": "object",
@@ -56,7 +196,31 @@
                     }
                 }
             },
-            "ResponseCreateUser": {
+            "RequestAuthUser": {
+                "type": "object",
+                "required": ["email", "senha"],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestEditUser": {
+                "type": "object",
+                "required": ["nome", "email"],
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseUser": {
                 "type": "object",
                 "properties": {
                     "id": {
@@ -79,6 +243,27 @@
                     "updated_at": {
                         "type": "string",
                         "format": "date-time"
+                    }
+                }
+            },
+            "ResponseAuthUser": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": ["CLIENTE", "ADMINISTRADOR"]
+                    },
+                    "token": {
+                        "type": "string"
                     }
                 }
             }
