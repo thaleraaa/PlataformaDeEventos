@@ -13,6 +13,7 @@ import { DeleteEventoController } from "./controllers/Eventos/DeleteEventoContro
 import { EditEventoController } from "./controllers/Eventos/EditEventoController";
 import { CreateIngressoController } from "./controllers/Ingresso/CreateIngressoController";
 import { FindByUserIngressoController } from "./controllers/Ingresso/FIndByUserIngressoController";
+import { isAdmin } from "./middlewares/isAdmin";
 
 const router = Router();
 const upload = multer(uploadConfig.upload("./tmp"));
@@ -30,10 +31,10 @@ router.delete('/user/remove', isAuthenticated, new DeleteUserController().handle
 
 
 // Evento Routes
-router.post('/evento', isAuthenticated, new CreateEventoController().handle);
-router.get('/evento', isAuthenticated, new DetailEventoController().handle);
-router.put('/evento/edit', isAuthenticated, new EditEventoController().handle);
-router.delete('/evento/remove', isAuthenticated, new DeleteEventoController().handle);
+router.post('/evento', isAuthenticated, isAdmin, new CreateEventoController().handle);
+router.get('/evento', isAuthenticated, isAdmin,  new DetailEventoController().handle);
+router.put('/evento/edit', isAuthenticated, isAdmin, new EditEventoController().handle);
+router.delete('/evento/remove', isAuthenticated, isAdmin, new DeleteEventoController().handle);
 
 
 // Ingresso Routes
