@@ -37,6 +37,8 @@ model Evento {
   horario String
   valor Float
 
+  ativo Boolean @default(true)
+
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
