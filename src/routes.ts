@@ -15,6 +15,7 @@ import { CreateIngressoController } from "./controllers/Ingresso/CreateIngressoC
 import { FindByUserIngressoController } from "./controllers/Ingresso/FIndByUserIngressoController";
 import { isAdmin } from "./middlewares/isAdmin";
 import { FindAllEventosController } from "./controllers/Eventos/FindAllEventoController";
+import { FindMyEventosController } from "./controllers/Eventos/FindMyEventosController";
 
 const router = Router();
 const upload = multer(uploadConfig.upload("./tmp"));
@@ -37,6 +38,8 @@ router.get('/evento', isAuthenticated, isAdmin,  new DetailEventoController().ha
 router.put('/evento/edit', isAuthenticated, isAdmin, new EditEventoController().handle);
 router.delete('/evento/remove', isAuthenticated, isAdmin, new DeleteEventoController().handle);
 router.get('/eventos', isAuthenticated, new FindAllEventosController().handle);
+router.get('/eventos/me', isAuthenticated, isAdmin, new FindMyEventosController().handle);
+
 
 // Ingresso Routes
 router.post('/ingresso', isAuthenticated, new CreateIngressoController().handle);
