@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    font-family: "Gajraj One", sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------- HEADER -------------------- */
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 1px solid white;
+
+    background: linear-gradient(180deg, #ff5fbf 0%, #381C7B 40%);
+}
+
+header h1 {
+    color: white;
+
+    font-size: 4rem;
+}
+
+main {
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #381C7B;
+
+    text-align: center;
+
+    color: white;
+
+    gap: 5rem;
+}
+
+main h2 {
+    margin-top: 98px;
+
+    font-size: 3rem;
+}
+
+.ingressos {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    min-height: 100vh;
+}
+
+.ingresso {
+    display: flex;
+    flex-direction: row;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+
+    margin: 0 7rem;
+
+    gap: 5rem;
+
+    padding: 10px 0;
+
+    background: radial-gradient(circle, #6733E1 0%, #381C7B 70%);
+}
+
+.ingresso-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingresso-info p {
+    font-family: "Coda", system-ui;
+
+    font-size: 2rem;
+
+}
