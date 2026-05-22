@@ -1,7 +1,12 @@
 * {
     margin: 0;
     font-family: "Gajraj One", sans-serif;
+    text-decoration: none;
+    color: inherit;
+    
 }
+
+/* ------------------- HEADER -------------------- */
 
 header {
     display: flex;
@@ -19,6 +24,8 @@ header h1 {
 
     font-size: 4rem;
 }
+
+/* ------------------------- MAIN ----------------------------- */
 
 main {
     display: flex;
@@ -110,4 +117,68 @@ main h2 {
 .infos p {
     font-family: "Coda", system-ui;
     font-weight: 300;
+}
+
+/* ----------------------------- FOOTER ------------------------ */
+
+footer {
+    background: radial-gradient(circle at 50% -30%, #673637 0%, #8A2F61 25%, #9727AE 65%, #9B2DC7 82%, #6733E1 100%);
+
+    display: flex;
+    flex-direction: row;
+
+    text-align: center;
+    align-items: center;
+    
+    justify-content: space-evenly;
+
+    color: white;
+
+    padding: 5rem 0;
+}
+
+footer p{
+    font-family: "Coda", system-ui !important;
+    font-weight: 100;
+
+    font-size: 23px;
+}
+
+footer h2 {
+    font-size: 50px;
+}
+
+.logo-footer {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+}
+
+.logo-footer img {
+    width: 100%;
+}
+
+.contatos {
+    display: flex;
+    flex-direction: row;
+
+    gap: 4rem;
+}
+
+.imagens-contatos {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+    gap: 4rem;
+
 }
