@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    font-family: "Gajraj One", sans-serif;
 }
 
 header {
@@ -10,12 +11,103 @@ header {
 
     border-bottom: 5px solid black;
 
-    background: linear-gradient(180deg, #ff5fbf 0%, #7a3cff 70%);
+    background: linear-gradient(180deg, #ff5fbf 0%, #381C7B 40%);
 }
 
 header h1 {
-    font-family: "Gajraj One", sans-serif;
     color: white;
 
     font-size: 4rem;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 70vh;
+
+    background: linear-gradient(180deg, #381C7B 70%, #ff5fbf 100%);
+
+    padding-bottom: 3rem;
+    
+}
+
+main h2 {
+    margin-bottom: 2rem;
+}
+
+.carrossel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+
+    background-color: white;
+
+    padding: 100px;
+
+    border-radius: 20px;
+
+    gap: 2rem;
+
+    height: 30vh;
+    width: 40vw;
+}
+
+.carrossel button {
+    display: flex;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 100%;
+    
+    width: 5vw;
+    height: 5vw;
+
+    font-size: 4rem;
+    font-weight: 1000;
+    font-family: 'Courier New', Courier;
+    
+    color: #381C7B;
+}
+
+#esquerdo { 
+    margin-right: 3rem;
+}
+
+#direito {
+    margin-left: 3rem;
+}
+
+.cards img {
+    width: 60%;
+    padding-right: 4rem;
+}
+
+main h2 {
+    color: white;
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    gap: 28px;
+    align-items: center;
+    justify-content: center;
+}
+
+.infos p {
+    font-family: "Coda", system-ui;
+    font-weight: 300;
 }
