@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    font-family: "Gajraj One", sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------- HEADER -------------------- */
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border-bottom: 5px solid white;
+
+    background: linear-gradient(180deg, #ff5fbf 0%, #381C7B 40%);
+}
+
+header h1 {
+    color: white;
+
+    font-size: 4rem;
+}
+
+
