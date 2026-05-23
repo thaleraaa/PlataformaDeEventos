@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    color: white;
+    font-family: "Coda", system-ui;
+}
+
+body {
+    background: linear-gradient(90deg, #381C7B 0%, #9327AE 20%, #C72DA6 40%, #D43071 60%, #DA314D 80%, #E13336 100%);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo preto com 50% de opacidade */
+    
+    margin: 5rem 30rem;
+
+    border-radius: 50px;
+
+    height: 70vh;
+
+    gap: 3rem;
+
+}
+
+.cadastro {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 1rem;
+}
+
+.cadastro h1 {
+    font-size: 30px;
+}
+
+.cadastro img {
+    width: 30%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px;
+
+}
+
+form input {
+    width: 15rem;
+    background: black;
+
+    border-radius: 50px;
+
+    border: 0;
+
+    padding: 10px 1rem;
+
+}
+
+form label {
+    width: 100%;
+    text-align: left;
+    margin-left: 1rem;
+}
+
+form button {
+    margin-top: 10px;
+
+    font-size: 25px;
+
+    padding: 10px 4rem;
+
+    margin-top: 3rem;
+
+}
+
+button {
+    background: linear-gradient(90deg, #E1337E 0%, #AE2795 50%, #381C7B 100%);
+
+    border-radius: 50px;
+    border: 0px;
+
+    font-weight: 800;
+
+    padding: 10px;
+
+    }
