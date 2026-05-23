@@ -2,10 +2,13 @@ import prismaClient from "../../prisma";
 import { EditEventoRequest } from "../../models/interfaces/Eventos/EditEventoRequest";
 
 class EditEventoService {
-    async execute ({id, nome, data, horario, valor} : EditEventoRequest) {
+    async execute ({id, nome, data, horario, valor, imagem} : EditEventoRequest) {
         if(!nome || !data || !horario || !valor || !id) {
             throw new Error ("Dados incompletos");
         }
+
+        const valorNumber = Number(valor);
+
 
         const evento = await prismaClient.evento.update({
             where: {
@@ -15,7 +18,8 @@ class EditEventoService {
                 nome: nome,
                 data: data,
                 horario: horario,
-                valor: valor
+                valor: valorNumber,
+                imagem: imagem
             }
         })
 

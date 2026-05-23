@@ -4,4 +4,5 @@ export interface CreateEventoRequest {
     horario: string;
     valor: number;
     user_id: string;
+    imagem: string;
 }

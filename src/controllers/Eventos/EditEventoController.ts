@@ -7,8 +7,15 @@ class EditEventoController {
         const { nome, data, horario, valor } : EditEventoRequest = request.body;
         const id = request.query.id as string;
         const editEventoService = new EditEventoService();
-        const editedEvento = await editEventoService.execute({id,nome,data,horario,valor});
-        return response.status(200).json(editedEvento);
+
+
+        if(!request.file) {
+            throw new Error ("Error sending image!");
+        } else {
+            const { originalname, filename: imagem} = request.file;
+            const editedEvento = await editEventoService.execute({id,nome,data,horario,valor, imagem});
+            return response.status(200).json(editedEvento);
+        }
     }
 }
 

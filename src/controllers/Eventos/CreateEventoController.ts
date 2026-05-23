@@ -7,8 +7,15 @@ class CreateEventoController {
         const {nome, data, horario, valor} : CreateEventoRequest = request.body;
         const user_id = request.user_id;
         const createEventoService = new CreateEventoService();
-        const evento = await createEventoService.execute({nome, data, horario, valor, user_id});
-        return response.status(201).json(evento);
+
+
+        if(!request.file) {
+            throw new Error ("Error sending image");
+        } else {
+            const { originalname, filename: imagem} = request.file;
+            const evento = await createEventoService.execute({nome, data, horario, valor, imagem, user_id});
+            return response.status(201).json(evento);
+        }
     }
 }
 
