@@ -194,9 +194,9 @@
                 ],
                 "requestBody": {
                     "required": true,
-                    "description": "Dados necessarios para criação do evento",
+                    "description": "Dados necessarios para criação do evento (inclui upload de imagem)",
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
                                 "$ref": "#/components/schemas/RequestCreateEvento"
                             }
@@ -280,6 +280,38 @@
                 }
             }
         },
+        "/v1/evento/imagem": {
+                    "get": {
+                        "description": "Imagem do evento",
+                        "tags": ["Evento"],
+                        "security": [
+                            { "bearerAuth": [] }
+                        ],
+                        "parameters": [
+                            {
+                                "name": "filename",
+                                "in": "query",
+                                "description": "Nome do arquivo da imagem do evento",
+                                "required": true,
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        ],
+                        "responses": {
+                            "200": {
+                                "description": "Imagem retornada com sucesso",
+                                "content": {
+                                    "image/*": {
+                                        "schema": {
+                                            "$ref": "#/components/schemas/ResponseGetImageEvento"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
         "/v1/eventos/me": {
             "get": {
                 "description": "Detalhe de todos os eventos pelo admin",
@@ -324,9 +356,9 @@
                 ],
                 "requestBody": {
                     "required": true,
-                    "description": "Dados necessarios para editar o evento",
+                    "description": "Dados necessarios para editar o evento (inclui upload de imagem)",
                     "content": {
-                        "application/json": {
+                        "multipart/form-data": {
                             "schema": {
                                 "$ref": "#/components/schemas/RequestEditEvento"
                             }
@@ -481,6 +513,10 @@
             }
         },
         "schemas": {
+            "ResponseGetImageEvento": {
+                "type": "string",
+                "format": "binary"
+            },
             "RequestCreateUser": {
                 "type": "object",
                 "required": ["nome", "email", "senha"],
@@ -583,6 +619,10 @@
                     },
                     "valor": {
                         "type": "number"
+                    },
+                    "file": {
+                        "type": "string",
+                        "format": "binary"
                     }
                 }
             },
@@ -602,6 +642,10 @@
                     },
                     "valor": {
                         "type": "number"
+                    },
+                    "file": {
+                        "type": "string",
+                        "format": "binary"
                     }
                 }
             },
@@ -624,6 +668,9 @@
                     "valor": {
                         "type": "number"
                     },
+                    "imagem": {
+                        "type": "string"
+                    },
                     "created_at": {
                         "type": "string",
                         "format": "date-time"
@@ -639,33 +686,39 @@
             },
             "ResponseEventos": {
                 "type": "array",
-                "properties": {
-                    "id": {
-                        "type": "string"
-                    },
-                    "nome": {
-                        "type": "string"
-                    },
-                    "data": {
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "horario": {
-                        "type": "string"
-                    },
-                    "valor": {
-                        "type": "number"
-                    },
-                    "created_at": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "updated_at": {
-                        "type": "string",
-                        "format": "date-time"
-                    },
-                    "user_id": {
-                        "type": "string"
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "nome": {
+                            "type": "string"
+                        },
+                        "data": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "horario": {
+                            "type": "string"
+                        },
+                        "valor": {
+                            "type": "number"
+                        },
+                        "imagem": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "user_id": {
+                            "type": "string"
+                        }
                     }
                 }
             },

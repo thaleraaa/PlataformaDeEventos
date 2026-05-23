@@ -16,6 +16,7 @@ import { FindByUserIngressoController } from "./controllers/Ingresso/FIndByUserI
 import { isAdmin } from "./middlewares/isAdmin";
 import { FindAllEventosController } from "./controllers/Eventos/FindAllEventoController";
 import { FindMyEventosController } from "./controllers/Eventos/FindMyEventosController";
+import { GetImageEventoController } from "./controllers/Eventos/GetImageEventoController";
 
 const router = Router();
 const upload = multer(uploadConfig.upload("./tmp"));
@@ -33,12 +34,13 @@ router.delete('/user/remove', isAuthenticated, new DeleteUserController().handle
 
 
 // Evento Routes
-router.post('/evento', isAuthenticated, isAdmin, new CreateEventoController().handle);
+router.post('/evento', isAuthenticated, isAdmin, upload.single("file"), new CreateEventoController().handle);
 router.get('/evento', isAuthenticated, isAdmin,  new DetailEventoController().handle);
-router.put('/evento/edit', isAuthenticated, isAdmin, new EditEventoController().handle);
+router.put('/evento/edit', isAuthenticated, isAdmin, upload.single("file"), new EditEventoController().handle);
 router.delete('/evento/remove', isAuthenticated, isAdmin, new DeleteEventoController().handle);
 router.get('/eventos', isAuthenticated, new FindAllEventosController().handle);
 router.get('/eventos/me', isAuthenticated, isAdmin, new FindMyEventosController().handle);
+router.get('/evento/imagem', isAuthenticated, new GetImageEventoController().handle);
 
 
 // Ingresso Routes

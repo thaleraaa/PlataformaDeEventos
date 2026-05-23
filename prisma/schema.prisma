@@ -36,6 +36,7 @@ model Evento {
   data String
   horario String
   valor Float
+  imagem String
 
   ativo Boolean @default(true)
 

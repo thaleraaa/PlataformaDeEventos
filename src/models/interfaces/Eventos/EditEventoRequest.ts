@@ -4,4 +4,5 @@ export interface EditEventoRequest {
     data: string;
     horario: string;
     valor: number;
+    imagem: string;
 }
