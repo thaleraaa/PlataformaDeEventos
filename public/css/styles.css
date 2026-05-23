@@ -10,18 +10,44 @@
 header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     border-bottom: 5px solid white;
 
     background: linear-gradient(180deg, #ff5fbf 0%, #381C7B 40%);
+
+    padding: 0 10rem;
+
+    color: white;
 }
 
 header h1 {
-    color: white;
-
     font-size: 4rem;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+
+.logo img {
+    width: 70%;
+}
+
+nav {
+    font-size: 2rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+
+    list-style: none;
+
+    gap: 2rem;
 }
 
 /* ------------------------- MAIN ----------------------------- */
