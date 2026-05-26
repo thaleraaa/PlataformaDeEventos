@@ -1,6 +1,7 @@
 const emailINPUT = document.querySelector('#email');
 const senhaINPUT = document.querySelector('#senha');
 const submit = document.querySelector('#form-login');
+const botaoINPUT = document.querySelector('#cadastro');
 
 const URL_API = 'http://localhost:3333/v1/session';
 
@@ -36,3 +37,8 @@ submit.addEventListener('submit', async (e) => {
     window.location.href = 'http://127.0.0.1:5500/public/index.html'
     alert('Login feito com sucesso!');
 });
+
+
+botaoINPUT.addEventListener('click', () => {
+    window.location.href = 'http://127.0.0.1:5500/public/pages/cadastro.html'
+})
