@@ -63,5 +63,6 @@ model Ingresso {
   evento_id String
   evento Evento @relation(fields: [evento_id], references: [id])
 
+  @@unique([evento_id, user_id])
 }
 

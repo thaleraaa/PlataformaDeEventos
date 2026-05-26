@@ -12,6 +12,9 @@ class CreateIngressoService {
                 qrcode: qrcode,
                 user_id: user_id,
                 evento_id: evento_id
+            },
+            include: {
+                evento: true
             }
         });
 
