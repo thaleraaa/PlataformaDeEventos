@@ -9,26 +9,29 @@ async function carregarDados() {
 }
 
 async function response () {
-    const response = await fetch(`${URL_API}/eventos/me`, {
+    const token = localStorage.getItem('token');
+
+    const response = await fetch(`${URL_API}/ingressos`, {
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${token}`
         }
     });
     const dados = await response.json();
-    return dados
+    console.log(dados);
+    return dados;
 }
 
 async function exibir() {
     const meusEventos = dados;
-    meusEventos.forEach(evento => {
-        const imagemUrl = `${URL_API}/evento/imagem?filename=${evento.imagem}`;
+    meusEventos.forEach(ingresso => {
+        const imagemUrl = `${URL_API}/evento/imagem?filename=${ingresso.evento.imagem}`;
         eventos.innerHTML += `
             <div class="ingresso">
                 <div class="ingresso-info">
-                    <p>${evento.nome}</p>
-                    <p>${evento.valor}</p>
-                    <p>${evento.data}</p>
-                    <p>${evento.horario}</p>
+                    <p>${ingresso.evento.nome}</p>
+                    <p>${ingresso.evento.valor}</p>
+                    <p>${ingresso.evento.data}</p>
+                    <p>${ingresso.evento.horario}</p>
                 </div>
                 <img src="${imagemUrl}" alt="">
             </div>

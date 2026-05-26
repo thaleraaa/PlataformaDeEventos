@@ -39,21 +39,57 @@ async function direita(e) {
 }
 
 async function exibir() {
+
     const evento = dados[indiceAtual];
-    const imagemUrl = `${URL_API}/evento/imagem?filename=${evento.imagem}`;
+
+    const imagemUrl =
+    `${URL_API}/evento/imagem?filename=${evento.imagem}`;
+
     divCarrossel.innerHTML = `
         <img src="${imagemUrl}" alt="">
+
         <div class="infos">
+
             <p>${evento.nome}</p>
             <p>${evento.valor}</p>
             <p>${evento.data}</p>
             <p>${evento.horario}</p>
+
+            <button id="comprar-btn">
+                <img src="assets/imgs/carrinho.png" alt="">
+            </button>
+
         </div>
     `;
+
+    const botaoComprar = document.querySelector('#comprar-btn');
+    botaoComprar.addEventListener('click', () => {
+            comprou(evento.id)
+        }
+    );
 }
 
-async function carrossel() {
-    
+comprou = async (id) => {
+    const response = await fetch(`${URL_API}/ingresso?evento_id=${id}`, {
+        method: 'POST',
+
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+
+        body: JSON.stringify({
+            qrcode: 'XXXXX'
+        })
+    });
+
+    if(!response.ok) {
+        alert("Não foi possivel realizar a compra");
+        return;
+    }
+
+    alert("Compra realizada!");
+
 }
 
 carregarDados();

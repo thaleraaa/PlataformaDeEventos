@@ -94,7 +94,7 @@ main h2 {
     width: 40vw;
 }
 
-.carrossel button {
+.carrossel > button {
     display: flex;
 
     text-align: center;
@@ -142,6 +142,22 @@ main h2 {
 .infos p {
     font-family: "Coda", system-ui;
     font-weight: 300;
+}
+
+#comprar-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: greenyellow;
+
+    width: 5vw;
+}
+
+#comprar-btn img {
+    width: 30%;
+    padding: 5px 0;
 }
 
 /* ----------------------------- FOOTER ------------------------ */
