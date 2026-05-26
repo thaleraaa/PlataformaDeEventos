@@ -2,7 +2,7 @@ const esquerdaBtn = document.querySelector('#esquerdo');
 const direitaBtn = document.querySelector('#direito');
 const divCarrossel = document.querySelector('.cards');
 const URL_API = 'http://localhost:3333/v1';
-
+const logout = document.querySelector('#logout');
 
 esquerdaBtn.addEventListener('click', esquerda);
 direitaBtn.addEventListener('click', direita);
@@ -17,13 +17,27 @@ async function carregarDados() {
 }
 
 async function response () {
-    const response = await fetch(`${URL_API}/eventos`);
+    
+    const response = await fetch(`${URL_API}/eventos`, {
+        method: 'GET',
+
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    });
+
+    if (response.status === 401 || response.status === 403) {
+        localStorage.removeItem('token');
+        alert('Token invalido!');
+        window.location.href = 'http://127.0.0.1:5500/public/pages/login.html';
+        return
+    }
+
     const dados = await response.json();
     return dados;
 }
 
 async function esquerda() {
-    console.log("Apertou o esquerdo!");
     if(indiceAtual !== 0) {
         indiceAtual --;
         exibir();
@@ -31,7 +45,6 @@ async function esquerda() {
 }
 
 async function direita(e) {
-    console.log("Apertou o direito!");
     if(dados.length - 1 > indiceAtual) {
         indiceAtual ++;
         exibir();
@@ -91,6 +104,11 @@ comprou = async (id) => {
     alert("Compra realizada!");
 
 }
+
+logout.addEventListener('click', () => {
+    localStorage.removeItem('token');
+})
+
 
 carregarDados();
 

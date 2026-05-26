@@ -16,6 +16,14 @@ async function response () {
             'Authorization': `Bearer ${token}`
         }
     });
+
+    if (response.status === 401 || response.status === 403) {
+        localStorage.removeItem('token');
+        alert('Token invalido!');
+        window.location.href = 'http://127.0.0.1:5500/public/pages/login.html';
+        return
+    }
+    
     const dados = await response.json();
     console.log(dados);
     return dados;
