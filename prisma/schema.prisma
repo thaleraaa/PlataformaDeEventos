@@ -38,6 +38,11 @@ model Evento {
   valor Float
   imagem String
 
+  rua String
+  bairro String
+  cidade String 
+  estado String
+
   ativo Boolean @default(true)
 
   created_at DateTime @default(now())
