@@ -8,7 +8,15 @@ const nomeINPUT = document.querySelector('#nome');
 const dataINPUT = document.querySelector('#data');
 const horarioINPUT = document.querySelector('#horario');
 const valorINPUT = document.querySelector('#valor');
-const imagemINPUT = document.querySelector('#imagem')
+const imagemINPUT = document.querySelector('#imagem');
+const cep = document.querySelector('#cep');
+const rua = document.querySelector('#rua');
+const bairro = document.querySelector("#bairro");
+const cidade = document.querySelector("#cidade");
+const estado = document.querySelector('#estado');
+
+
+
 let modoEdicao = false;
 let eventoEditandoId = null;
 let dados = [];
@@ -51,6 +59,12 @@ async function exibir() {
                 <p>${evento.valor}</p>
                 <p>${evento.data}</p>
                 <p>${evento.horario}</p>
+                <p>
+                    ${evento.rua} - ${evento.bairro}
+                </p>
+                <p>
+                    ${evento.cidade} - ${evento.estado}
+                </p>
             </div>
             <img class="btn-remover" src="../assets/imgs/lixeira.png" alt="">
             <img class="btn-editar" src="../assets/imgs/editar.png" alt="">
@@ -108,6 +122,10 @@ addBTN.addEventListener('click', () => {
     dataINPUT.value = '';
     horarioINPUT.value = '';
     valorINPUT.value = '';
+    rua.value = '';
+    bairro.value = '';
+    cidade.value = '';
+    estado.value = '';
     modalBTN.innerText = 'ADICIONAR'
     modal.style.display = 'block';
     body.style.opacity = 0.5;
@@ -122,6 +140,10 @@ modalBTN.addEventListener('click', async (e) => {
     formData.append('data', dataINPUT.value);
     formData.append('horario', horarioINPUT.value);
     formData.append('valor', valorINPUT.value);
+    formData.append('rua', rua.value);
+    formData.append('bairro', bairro.value);
+    formData.append('cidade', cidade.value);
+    formData.append('estado', estado.value);
     formData.append('file', imagemINPUT.files[0]);
 
     let url;
@@ -158,6 +180,17 @@ modalBTN.addEventListener('click', async (e) => {
 
     modal.style.display = 'none';
     window.location.reload();
+});
+
+cep.addEventListener('change', async () => {
+    const cepValor = cep.value;
+    const response = await fetch(`https://brasilapi.com.br/api/cep/v1/${cepValor}`);
+    const dados = await response.json();    
+
+    rua.value = dados.street;
+    bairro.value = dados.neighborhood;
+    cidade.value = dados.city;
+    estado.value = dados.state;
 });
 
 carregarDados();

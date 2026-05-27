@@ -84,7 +84,12 @@ async function exibir() {
             <p>${evento.valor}</p>
             <p>${evento.data}</p>
             <p>${evento.horario}</p>
-
+            <p>
+                ${evento.rua} - ${evento.bairro}
+            </p>
+            <p>
+                ${evento.cidade} - ${evento.estado}
+            </p>
             <button id="comprar-btn">
                 <img src="assets/imgs/carrinho.png" alt="">
             </button>

@@ -4,7 +4,7 @@ import { EditEventoService } from "../../services/Eventos/EditEventoService";
 
 class EditEventoController {
     async handle(request: Request, response: Response) {
-        const { nome, data, horario, valor } : EditEventoRequest = request.body;
+        const { nome, data, horario, valor, rua, bairro, cidade, estado } : EditEventoRequest = request.body;
         const id = request.query.id as string;
         const editEventoService = new EditEventoService();
 
@@ -13,7 +13,7 @@ class EditEventoController {
             throw new Error ("Error sending image!");
         } else {
             const { originalname, filename: imagem} = request.file;
-            const editedEvento = await editEventoService.execute({id,nome,data,horario,valor, imagem});
+            const editedEvento = await editEventoService.execute({id,nome,data,horario,valor,imagem,rua,bairro,cidade,estado});
             return response.status(200).json(editedEvento);
         }
     }

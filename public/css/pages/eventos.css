@@ -101,15 +101,15 @@ main > button {
 .modal {
     display: none;
     position: fixed;
-    top: 10%;
-    left: 30%;
+    top: 5%;
+    left: 25%;
 
     background: linear-gradient(90deg, #ff5fbf 0%, #381C7B 50%);
 
     border: 10px solid black;
 
-    width: 40vw;
-    height: 80vh;
+    width: 50vw;
+    height: 85vh;
 
     z-index: 1;
 
@@ -128,7 +128,7 @@ main > button {
     text-align: center;
     justify-content: center;
 
-    gap: 1rem;
+    gap: 5px;
 }
 
 #form-evento input {
@@ -162,9 +162,26 @@ main > button {
     padding: 10px;
 }
 
+.cep1, .cep2 {
+    margin: 5px 0;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.cep1 input,
+.cep2 input {
+    width: 15vw !important;
+}
+
 .ingresso .btn-remover {
     width: 3%;
 }
 .ingresso .btn-editar {
     width: 3%;
+}
+
+#imagem {
+    margin-bottom: 1.5rem;
 }

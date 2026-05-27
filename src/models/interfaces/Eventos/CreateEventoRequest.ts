@@ -5,4 +5,8 @@ export interface CreateEventoRequest {
     valor: number;
     user_id: string;
     imagem: string;
+    rua: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
 }

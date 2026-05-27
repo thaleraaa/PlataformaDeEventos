@@ -43,6 +43,12 @@ async function exibir() {
                     <p>${ingresso.evento.valor}</p>
                     <p>${ingresso.evento.data}</p>
                     <p>${ingresso.evento.horario}</p>
+                    <p>
+                        ${ingresso.evento.rua} - ${ingresso.evento.bairro}
+                    </p>
+                    <p>
+                        ${ingresso.evento.cidade} - ${ingresso.evento.estado}
+                    </p>              
                 </div>
                 <img src="${imagemUrl}" alt="">
             </div>

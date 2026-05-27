@@ -605,7 +605,7 @@
             },
             "RequestCreateEvento": {
                 "type": "object",
-                "required": ["nome", "data", "horario", "valor"],
+                "required": ["nome", "data", "horario", "valor", "rua", "bairro","cidade", "estado"],
                 "properties": {
                     "nome": {
                         "type": "string"
@@ -623,6 +623,18 @@
                     "file": {
                         "type": "string",
                         "format": "binary"
+                    },
+                    "rua": {
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
                     }
                 }
             },
@@ -646,6 +658,18 @@
                     "file": {
                         "type": "string",
                         "format": "binary"
+                    },
+                    "rua": {
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
                     }
                 }
             },
@@ -669,6 +693,18 @@
                         "type": "number"
                     },
                     "imagem": {
+                        "type": "string"
+                    },
+                    "rua": {
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
                         "type": "string"
                     },
                     "created_at": {
@@ -706,6 +742,18 @@
                             "type": "number"
                         },
                         "imagem": {
+                            "type": "string"
+                        },
+                        "rua": {
+                        "type": "string"
+                        },
+                        "bairro": {
+                            "type": "string"
+                        },
+                        "cidade": {
+                            "type": "string"
+                        },
+                        "estado": {
                             "type": "string"
                         },
                         "created_at": {
