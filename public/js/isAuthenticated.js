@@ -13,16 +13,13 @@ async function checarAutenticacao() {
     });
 
     if (!response.ok) {
-      // Token inválido ou expirado
       localStorage.removeItem('token');
       window.location.href = 'http://127.0.0.1:5500/public/pages/login.html';
     }
   } catch (err) {
-    // Erro de rede ou servidor
     localStorage.removeItem('token');
     window.location.href = 'http://127.0.0.1:5500/public/pages/login.html';
   }
 }
 
-// Chame isso no início da página
 checarAutenticacao();

@@ -3,6 +3,8 @@ const direitaBtn = document.querySelector('#direito');
 const divCarrossel = document.querySelector('.cards');
 const URL_API = 'http://localhost:3333/v1';
 const logout = document.querySelector('#logout');
+const meuseventos = document.querySelector('#eventos-role')
+const meusingressos = document.querySelector('#ingressos-role')
 
 esquerdaBtn.addEventListener('click', esquerda);
 direitaBtn.addEventListener('click', direita);
@@ -18,11 +20,13 @@ async function carregarDados() {
 
 async function response () {
     
+    const token = localStorage.getItem('token');
+
     const response = await fetch(`${URL_API}/eventos`, {
         method: 'GET',
 
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+            'Authorization': `Bearer ${token}`
         }
     });
 
@@ -31,6 +35,16 @@ async function response () {
         alert('Token invalido!');
         window.location.href = 'http://127.0.0.1:5500/public/pages/login.html';
         return
+    }
+
+    const {role} = decodificarToken(token);
+
+    if(role === 'ADMINISTRADOR') {
+        meusingressos.style.display = 'none'
+        meuseventos.style.display = 'block'
+    } else {
+        meusingressos.style.display = 'block'
+        meuseventos.style.display = 'none'   
     }
 
     const dados = await response.json();
@@ -108,6 +122,13 @@ comprou = async (id) => {
 logout.addEventListener('click', () => {
     localStorage.removeItem('token');
 })
+
+function decodificarToken(token) {
+  const payload = token.split('.')[1]; // pega a parte do meio
+  const decoded = atob(payload);       // decodifica base64
+  return JSON.parse(decoded);
+}
+
 
 
 carregarDados();
