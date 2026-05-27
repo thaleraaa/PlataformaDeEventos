@@ -44,7 +44,7 @@ model Evento {
   updated_at DateTime @updatedAt
 
   user_id String
-  user Usuario @relation(fields: [user_id], references: [id])
+  user Usuario @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   ingresso Ingresso[]
   
@@ -58,10 +58,10 @@ model Ingresso {
   updated_at DateTime @updatedAt
 
   user_id String
-  user Usuario @relation(fields: [user_id], references: [id])
+  user Usuario @relation(fields: [user_id], references: [id], onDelete: Cascade)
 
   evento_id String
-  evento Evento @relation(fields: [evento_id], references: [id])
+  evento Evento @relation(fields: [evento_id], references: [id], onDelete: Cascade)
 
   @@unique([evento_id, user_id])
 }

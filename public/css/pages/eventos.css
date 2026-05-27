@@ -3,6 +3,7 @@
     font-family: "Gajraj One", sans-serif;
     text-decoration: none;
     color: inherit;
+    z-index: 0;
 }
 
 /* ------------------- HEADER -------------------- */
@@ -35,7 +36,9 @@ main {
 
     color: white;
 
-    gap: 5rem;
+    gap: 3rem;
+
+    align-items: center;
 }
 
 main h2 {
@@ -86,4 +89,82 @@ main h2 {
 
 .ingresso img {
     width: 30%;
+}
+
+main > button {
+    background-color: greenyellow;
+    border-radius: 10px;
+    font-size: 3rem;
+    width: 100px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 30%;
+
+    background: linear-gradient(90deg, #ff5fbf 0%, #381C7B 50%);
+
+    border: 10px solid black;
+
+    width: 40vw;
+    height: 80vh;
+
+    z-index: 1;
+
+    color: white;
+
+    
+}
+
+#form-evento {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 3rem;
+
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    gap: 1rem;
+}
+
+#form-evento input {
+    width: 15rem;
+    background: #6733E1;
+
+    border-radius: 50px;
+
+    border: 0;
+
+    padding: 10px 1rem;
+}
+
+#form-evento label {
+    font-family: "Coda", system-ui;
+}
+
+#form-evento button {
+
+    font-family: "Coda", system-ui;
+
+
+    background: linear-gradient(90deg, #E1337E 0%, #AE2795 50%, #381C7B 100%);
+
+    border-radius: 50px;
+    border: 0px;
+    font-size: 1.5rem;
+
+    font-weight: 800;
+
+    padding: 10px;
+}
+
+.ingresso .btn-remover {
+    width: 3%;
+}
+.ingresso .btn-editar {
+    width: 3%;
 }
