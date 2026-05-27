@@ -22,6 +22,9 @@ async function response () {
         alert('Token invalido!');
         window.location.href = 'http://127.0.0.1:5500/public/pages/login.html';
         return
+    } else if(!response.ok) {
+        alert('Não foi possivel carregar os seus ingressos');
+        return;
     }
     
     const dados = await response.json();
