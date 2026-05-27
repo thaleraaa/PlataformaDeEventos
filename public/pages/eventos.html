@@ -11,15 +11,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Coda:wght@400;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <a href="../index.html"><header>
-        <img src="../assets/imgs/logo.png" alt="">
-        <h1>Eventos</h1>
-    </header></a>
+    <div id="overlay">
+        <a href="../index.html"><header>
+            <img src="../assets/imgs/logo.png" alt="">
+            <h1>Eventos</h1>
+        </header></a>
 
-    <main>
-        <h2>MEUS EVENTOS</h2>
-        <div class="ingressos"></div>
-    </main>
+        <main>
+            <h2>MEUS EVENTOS</h2>
+            <button id="adicionar-evento">+</button>
+            <div class="ingressos"></div>
+        </main>
+    </div>
+
+    
+    <div class="modal">
+        <form id="form-evento">
+            <label for="nome">nome</label>
+            <input type="text" name="nome" id="nome">
+            <label for="data">data</label>
+            <input type="date" name="data" id="data">
+            <label for="horario">horario</label>
+            <input type="datetime" name="horario" id="horario">
+            <label for="valor">valor</label>
+            <input type="number" name="valor" id="valor">
+            <label for="imagem">imagem</label>
+            <input type="file" name="imagem" id="imagem">
+            <button id="input-dados"></button>
+        </form>
+    </div>
+
     <script src="../js/isAuthenticated.js"></script>
     <script src="../js/eventos.js"></script>
 </body>

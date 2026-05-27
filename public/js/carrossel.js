@@ -89,7 +89,7 @@ async function exibir() {
         </div>
     `;
 
-    const botaoComprar = document.querySelector('#comprar-btn');
+    const botaoComprar = divCarrossel.querySelector('#comprar-btn');
     botaoComprar.addEventListener('click', () => {
             comprou(evento.id)
         }
