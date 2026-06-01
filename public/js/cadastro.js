@@ -2,6 +2,7 @@ const form = document.querySelector('#form-cadastro');
 const nomeINPUT = document.querySelector('#nome');
 const emailINPUT = document.querySelector('#email');
 const senhaINPUT = document.querySelector('#senha');
+const tipoINPUT = document.querySelector('#tipo');
 const senhaConfirmadaINPUT = document.querySelector('#senha-confirmada');
 
 const URL_API = 'http://localhost:3333/v1/user';
@@ -13,6 +14,7 @@ form.addEventListener('submit', async (e) => {
     const email = emailINPUT.value;
     const senha = senhaINPUT.value;
     const senhaConfirmada = senhaConfirmadaINPUT.value;
+    const tipoADM = tipoINPUT.value;
 
     if(senha !== senhaConfirmada) {
         alert("As senhas digitadas não são iguais");
@@ -29,7 +31,8 @@ form.addEventListener('submit', async (e) => {
         body: JSON.stringify({
             nome: nome,
             email: email,
-            senha: senha
+            senha: senha,
+            role: tipoADM
         })
     });
 

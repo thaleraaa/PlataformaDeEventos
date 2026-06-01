@@ -3,8 +3,8 @@ import { CreateUserRequest } from "../../models/interfaces/User/CreateUserReques
 import { hash } from "bcryptjs"
  
 class CreateUserService {
-    async execute ({nome, email, senha} : CreateUserRequest) {
-        if(!nome || !email || !senha) {
+    async execute ({nome, email, senha, role} : CreateUserRequest) {
+        if(!nome || !email || !senha || !role) {
             throw new Error ("Dados incompleto");
         } 
 
@@ -14,7 +14,8 @@ class CreateUserService {
             data: {
                 nome: nome,
                 email: email,
-                senha: senhaHash
+                senha: senhaHash,
+                role: role
             },
             omit: {
                 senha: true

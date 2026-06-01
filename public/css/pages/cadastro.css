@@ -22,7 +22,7 @@ main {
 
     border-radius: 50px;
 
-    height: 70vh;
+    height: 80vh;
 
     gap: 3rem;
 
@@ -67,6 +67,17 @@ form input {
 
 }
 
+/* Estilização específica para o select */
+form select {
+    width: 15rem;
+    background: black;
+    color: white;
+    border-radius: 50px;
+    border: 0;
+    padding: 10px 1rem;
+    background-repeat: no-repeat;
+}
+
 form label {
     width: 100%;
     text-align: left;
@@ -74,13 +85,12 @@ form label {
 }
 
 form button {
-    margin-top: 10px;
-
     font-size: 25px;
 
     padding: 10px 4rem;
 
-    margin-top: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
 }
 
