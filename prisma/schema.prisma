@@ -21,7 +21,7 @@ model Usuario {
   nome String
   email String @unique
   senha String
-  role Role @default(CLIENTE)
+  role Role
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

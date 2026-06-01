@@ -4,9 +4,9 @@ import { CreateUserRequest } from "../../models/interfaces/User/CreateUserReques
 
 class CreateUserController {
     async handle (request: Request, response: Response) {
-        const { nome, email, senha } : CreateUserRequest = request.body;
+        const { nome, email, senha, role } : CreateUserRequest = request.body;
         const createUserService = new CreateUserService();
-        const user = await createUserService.execute({nome, email, senha});
+        const user = await createUserService.execute({nome, email, senha, role});
         return response.status(201).json(user);
     }
 }
