@@ -110,6 +110,7 @@ main > button {
 
     width: 50vw;
     height: 85vh;
+    overflow-y: auto;
 
     z-index: 1;
 
@@ -184,4 +185,8 @@ main > button {
 
 #imagem {
     margin-bottom: 1.5rem;
+}
+
+#input-dados {
+    margin-bottom: 2rem;
 }
