@@ -7,7 +7,7 @@ Uma plataforma web completa para criação, gerenciamento e compra de ingressos 
 
 ## Descrição do Projeto
 
-A **Plataforma de Eventos** é um sistema fullstack de gerenciamento de eventos que conecta organizadores e participantes. A aplicação permite que administradores criem e gerenciem eventos com imagem, data, horário, localização e preço. Clientes podem visualizar os eventos disponíveis e adquirir ingressos únicos com QR Code associado.
+A **Plataforma de Eventos** é um sistema fullstack de gerenciamento de eventos que conecta organizadores e participantes. A aplicação permite que administradores criem e gerenciem eventos com imagem, data, horário, localização e preço. Clientes podem visualizar os eventos disponíveis e adquirir ingressos únicos.
 
 O sistema conta com autenticação via JWT, controle de acesso por perfil (Administrador / Cliente), upload de imagens e documentação da API via Swagger.
 
@@ -38,7 +38,7 @@ O sistema conta com autenticação via JWT, controle de acesso por perfil (Admin
 
 ---
 
-## ✅ Funcionalidades
+## Funcionalidades
 
 - Cadastro e autenticação de usuários (JWT)
 - Perfis de acesso: **Administrador** (organizador) e **Cliente**
@@ -51,7 +51,7 @@ O sistema conta com autenticação via JWT, controle de acesso por perfil (Admin
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 ### Página Principal — Carrossel de Eventos
 ![alt text](screenshots/index.png)
@@ -77,7 +77,7 @@ O sistema conta com autenticação via JWT, controle de acesso por perfil (Admin
 ---
 
 
-## 🚀 Como Executar
+## Como Executar
 
 ### Pré-requisitos
 
@@ -112,7 +112,7 @@ A documentação da API estará em `http://localhost:3333/api-docs`.
 
 ---
 
-## 🔑 Variáveis de Ambiente
+## Variáveis de Ambiente
 
 Crie um arquivo `.env` na raiz do projeto baseado no `.env.example`:
 
@@ -127,7 +127,7 @@ JWT_SECRET="uma-hash-muito-segura"
 
 ---
 
-## 🗺 Rotas da API
+## Rotas da API
 
 Todas as rotas são prefixadas por `/v1`.
 
@@ -159,7 +159,7 @@ Todas as rotas são prefixadas por `/v1`.
 
 ---
 
-## 👥 Integrantes
+## Integrantes
 
 | Nome | GitHub |
 |---|---|
