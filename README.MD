@@ -1,11 +1,11 @@
-# 🎟️ Plataforma de Eventos
+# Plataforma de Eventos
 
 Uma plataforma web completa para criação, gerenciamento e compra de ingressos de eventos. Administradores podem publicar eventos com imagem, localização e valor, enquanto clientes navegam pelos eventos disponíveis e adquirem seus ingressos com QR Code.
 
 ---
 
 
-## 📌 Descrição do Projeto
+## Descrição do Projeto
 
 A **Plataforma de Eventos** é um sistema fullstack de gerenciamento de eventos que conecta organizadores e participantes. A aplicação permite que administradores criem e gerenciem eventos com imagem, data, horário, localização e preço. Clientes podem visualizar os eventos disponíveis e adquirir ingressos únicos com QR Code associado.
 
@@ -16,25 +16,23 @@ O sistema conta com autenticação via JWT, controle de acesso por perfil (Admin
 ## 🛠 Tecnologias Utilizadas
 
 ### Backend
-| Tecnologia |
-|---|
-| **Node.js** | 
-| **TypeScript** | 
-| **Express** | 
-| **Prisma ORM** |
-| **PostgreSQL** |
-| **JWT (jsonwebtoken)** |
-| **bcryptjs** |
-| **Multer** | 
-| **Swagger UI** | 
-| **Docker** | 
+Tecnologia
+**Node.js**  
+**TypeScript**  
+**Express**  
+**Prisma ORM**
+**PostgreSQL**
+**JWT (jsonwebtoken)**
+**bcryptjs**
+**Multer**
+**Swagger UI** 
+**Docker** 
 
 ### Frontend
-| Tecnologia |
-|---|
-| **HTML** | 
-| **CSS** | 
-| **JavaScript (Vanilla)** | 
+Tecnologia
+**HTML** 
+**CSS** 
+**JavaScript (Vanilla)** 
 
 ---
 
