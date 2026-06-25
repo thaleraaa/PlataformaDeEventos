@@ -1,6 +1,6 @@
 # Plataforma de Eventos
 
-Uma plataforma web completa para criação, gerenciamento e compra de ingressos de eventos. Administradores podem publicar eventos com imagem, localização e valor, enquanto clientes navegam pelos eventos disponíveis e adquirem seus ingressos com QR Code.
+Uma plataforma web completa para criação, gerenciamento e compra de ingressos de eventos. Administradores podem publicar eventos com imagem, localização e valor, enquanto clientes navegam pelos eventos disponíveis e adquirem seus ingressos.
 
 ---
 
@@ -45,7 +45,7 @@ O sistema conta com autenticação via JWT, controle de acesso por perfil (Admin
 - CRUD completo de eventos (somente administradores)
 - Upload de imagem de capa para cada evento
 - Busca de todos os eventos disponíveis
-- Compra de ingressos com geração de QR Code
+- Compra de ingressos
 - Visualização dos ingressos do usuário logado
 - Documentação da API disponível em `/api-docs`
 
