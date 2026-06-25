@@ -16,23 +16,25 @@ O sistema conta com autenticação via JWT, controle de acesso por perfil (Admin
 ## 🛠 Tecnologias Utilizadas
 
 ### Backend
-Tecnologia
-**Node.js**  
-**TypeScript**  
-**Express**  
-**Prisma ORM**
-**PostgreSQL**
-**JWT (jsonwebtoken)**
-**bcryptjs**
-**Multer**
-**Swagger UI** 
-**Docker** 
+| Tecnologia |
+|---|
+| **Node.js** | 
+| **TypeScript** | 
+| **Express** | 
+| **Prisma ORM** |
+| **PostgreSQL** |
+| **JWT (jsonwebtoken)** |
+| **bcryptjs** |
+| **Multer** | 
+| **Swagger UI** | 
+| **Docker** | 
 
 ### Frontend
-Tecnologia
-**HTML** 
-**CSS** 
-**JavaScript (Vanilla)** 
+| Tecnologia |
+|---|
+| **HTML** | 
+| **CSS** | 
+| **JavaScript (Vanilla)** | 
 
 ---
 
