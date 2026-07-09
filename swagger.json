@@ -1,0 +1,817 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Eventos API",
+		"version": "1.0.0",
+		"description": "Documentação inicial da API."
+	},
+    "tags": [
+        {
+            "name": "Autenticação",
+            "description": "Rota relacionada ao login"
+        },
+        {
+            "name": "Usuario",
+            "description": "Rotas relacionadas ao usuário"
+        },
+        {
+            "name": "Evento",
+            "description": "Rotas relacionadas ao evento"
+        },
+        {
+            "name": "Ingresso",
+            "description": "Rotas relacionadas ao ingresso"
+        }
+    ],
+	"paths": {
+        "/v1/session": {
+            "post": {
+                "description": "Autenticação do usuario",
+                "tags": ["Autenticação"],
+                "requestBody": {
+                    "required": true,
+                    "description": "Credenciais necessarias para login",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestAuthUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario autenticado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseAuthUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos"
+                    },
+                    "401": {
+                        "description": "Senha ou email invalido"
+                    }
+                }
+            }
+        },
+        "/v1/user": {
+            "post": {
+                "description": "Criação do usuario",
+                "tags": ["Usuario"],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para criação do usuario",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestCreateUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    }
+                }
+            }
+        },
+        "/v1/user/me": {
+            "get": {
+                "description": "Detalhes do usuario autenticado",
+                "tags": ["Usuario"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario encontrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseUser"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/user/edit": {
+            "put": {
+                "description": "Atualização dos dados do usuario autenticado",
+                "tags": ["Usuario"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para editar o usuario",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestEditUser"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuario atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseUser"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Os dados não podem estar vazios"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/user/remove": {
+            "delete": {
+                "description": "Remoção do usuario autenticado",
+                "tags": ["Usuario"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Usuario removido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseUser"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/evento": {
+            "post": {
+                "description": "Criação do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para criação do evento (inclui upload de imagem)",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestCreateEvento"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Evento criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            },
+            "get": {
+                "description": "Detalhes do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "description": "Id do evento",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Evento encontrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+                }
+        },
+        "/v1/eventos": {
+            "get": {
+                "tags": ["Evento"],
+                "description": "Detalhe de todos os eventos disponiveis",
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEventos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/evento/imagem": {
+                    "get": {
+                        "description": "Imagem do evento",
+                        "tags": ["Evento"],
+                        "security": [
+                            { "bearerAuth": [] }
+                        ],
+                        "parameters": [
+                            {
+                                "name": "filename",
+                                "in": "query",
+                                "description": "Nome do arquivo da imagem do evento",
+                                "required": true,
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        ],
+                        "responses": {
+                            "200": {
+                                "description": "Imagem retornada com sucesso",
+                                "content": {
+                                    "image/*": {
+                                        "schema": {
+                                            "$ref": "#/components/schemas/ResponseGetImageEvento"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+        "/v1/eventos/me": {
+            "get": {
+                "description": "Detalhe de todos os eventos pelo admin",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEventos"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/v1/evento/edit": {
+            "put": {
+                "description": "Atualização dos dados do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "description": "Id do evento",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para editar o evento (inclui upload de imagem)",
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestEditEvento"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Evento atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados inválidos"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/evento/remove": {
+            "delete": {
+                "description": "Remoção do evento",
+                "tags": ["Evento"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "description": "Id do evento",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Evento removido com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseEvento"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        }
+        ,
+        "/v1/ingresso": {
+            "post": {
+                "description": "Criação do ingresso",
+                "tags": ["Ingresso"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "name": "evento_id",
+                        "in": "query",
+                        "required": true,
+                        "description": "Id do evento",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "description": "Dados necessarios para criação do ingresso",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RequestCreateIngresso"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Ingresso criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResponseIngresso"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Dados incompletos"
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        },
+        "/v1/ingressos": {
+            "get": {
+                "description": "Listar ingressos por usuário",
+                "tags": ["Ingresso"],
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ingressos encontrados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ResponseIngressoWithEvento"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Não autorizado"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        },
+        "schemas": {
+            "ResponseGetImageEvento": {
+                "type": "string",
+                "format": "binary"
+            },
+            "RequestCreateUser": {
+                "type": "object",
+                "required": ["nome", "email", "senha"],
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestAuthUser": {
+                "type": "object",
+                "required": ["email", "senha"],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "senha": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestEditUser": {
+                "type": "object",
+                "required": ["nome", "email"],
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseUser": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": ["CLIENTE", "ADMINISTRADOR"]
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ResponseAuthUser": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string",
+                        "enum": ["CLIENTE", "ADMINISTRADOR"]
+                    },
+                    "token": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestCreateEvento": {
+                "type": "object",
+                "required": ["nome", "data", "horario", "valor", "rua", "bairro","cidade", "estado"],
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "horario": {
+                        "type": "string"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "file": {
+                        "type": "string",
+                        "format": "binary"
+                    },
+                    "rua": {
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
+                    }
+                }
+            },
+            "RequestEditEvento": {
+                "type": "object",
+                "required": ["nome", "data", "horario", "valor"],
+                "properties": {
+                    "nome": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "horario": {
+                        "type": "string"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "file": {
+                        "type": "string",
+                        "format": "binary"
+                    },
+                    "rua": {
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseEvento": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "nome": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "horario": {
+                        "type": "string"
+                    },
+                    "valor": {
+                        "type": "number"
+                    },
+                    "imagem": {
+                        "type": "string"
+                    },
+                    "rua": {
+                        "type": "string"
+                    },
+                    "bairro": {
+                        "type": "string"
+                    },
+                    "cidade": {
+                        "type": "string"
+                    },
+                    "estado": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "user_id": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseEventos": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "nome": {
+                            "type": "string"
+                        },
+                        "data": {
+                            "type": "string",
+                            "format": "date"
+                        },
+                        "horario": {
+                            "type": "string"
+                        },
+                        "valor": {
+                            "type": "number"
+                        },
+                        "imagem": {
+                            "type": "string"
+                        },
+                        "rua": {
+                        "type": "string"
+                        },
+                        "bairro": {
+                            "type": "string"
+                        },
+                        "cidade": {
+                            "type": "string"
+                        },
+                        "estado": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "format": "date-time"
+                        },
+                        "user_id": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "RequestCreateIngresso": {
+                "type": "object",
+                "required": ["qrcode"],
+                "properties": {
+                    "qrcode": {
+                        "type": "string"
+                    }
+                }
+            },
+            "ResponseIngresso": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "qrcode": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "evento_id": {
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "type": "string"
+                    }
+                }
+            }
+            ,
+            "ResponseIngressoWithEvento": {
+                "allOf": [
+                    { "$ref": "#/components/schemas/ResponseIngresso" },
+                    {
+                        "type": "object",
+                        "properties": {
+                            "evento": { "$ref": "#/components/schemas/ResponseEvento" }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

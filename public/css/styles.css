@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    font-family: "Gajraj One", sans-serif;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ------------------- HEADER -------------------- */
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 5px solid white;
+
+    background: linear-gradient(180deg, #ff5fbf 0%, #381C7B 40%);
+
+    padding: 0 2rem;
+
+    color: white;
+}
+
+header h1 {
+    font-size: 4rem;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+}
+
+.logo img {
+    width: 70%;
+}
+
+nav {
+    font-size: 2rem;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    text-align: center;
+
+    list-style: none;
+
+    gap: 2rem;
+}
+
+#logout {
+    width: 5rem;
+    text-align: center;
+    align-items: center;
+}
+
+#logout img {
+    width: 90%;
+}
+
+/* ------------------------- MAIN ----------------------------- */
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 70vh;
+
+    background: linear-gradient(180deg, #381C7B 70%, #ff5fbf 100%);
+
+    padding-bottom: 3rem;
+    
+}
+
+main h2 {
+    margin-bottom: 2rem;
+}
+
+.carrossel {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards {
+    display: flex;
+    flex-direction: row;
+
+    background-color: white;
+
+    padding: 100px;
+
+    border-radius: 20px;
+
+    gap: 2rem;
+
+    height: 30vh;
+    width: 50vw;
+}
+
+.carrossel > button {
+    display: flex;
+
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 100%;
+    
+    width: 5vw;
+    height: 5vw;
+
+    font-size: 4rem;
+    font-weight: 1000;
+    font-family: 'Courier New', Courier;
+    
+    color: #381C7B;
+}
+
+#esquerdo { 
+    margin-right: 3rem;
+}
+
+#direito {
+    margin-left: 3rem;
+}
+
+.cards img {
+    width: 70%;
+    padding-right: 3rem;
+}
+
+main h2 {
+    color: white;
+}
+
+.infos{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.7rem;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.infos p {
+    font-family: "Coda", system-ui;
+    font-weight: 300;
+}
+
+#comprar-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: greenyellow;
+
+    width: 5vw;
+}
+
+#comprar-btn img {
+    width: 30%;
+    padding: 5px 0;
+}
+
+/* ----------------------------- FOOTER ------------------------ */
+
+footer {
+    background: radial-gradient(circle at 50% -30%, #673637 0%, #8A2F61 25%, #9727AE 65%, #9B2DC7 82%, #6733E1 100%);
+
+    display: flex;
+    flex-direction: row;
+
+    text-align: center;
+    align-items: center;
+    
+    justify-content: space-evenly;
+
+    color: white;
+
+    padding: 5rem 0;
+}
+
+footer p{
+    font-family: "Coda", system-ui !important;
+    font-weight: 100;
+
+    font-size: 23px;
+}
+
+footer h2 {
+    font-size: 50px;
+}
+
+.logo-footer {
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+}
+
+.logo-footer img {
+    width: 100%;
+}
+
+.contatos {
+    display: flex;
+    flex-direction: row;
+
+    gap: 4rem;
+}
+
+.imagens-contatos {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+
+    gap: 4rem;
+}

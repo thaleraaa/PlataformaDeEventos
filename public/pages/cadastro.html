@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/pages/cadastro.css">
+</head>
+<body>
+    <main>
+        <div class="cadastro">
+            <img src="../assets/imgs/logo-branca.png" alt="">
+            <h1>REALIZE SEU CADASTRO</h1>
+            <form id="form-cadastro" method="post">
+                <label for="nome">nome</label>
+                <input type="nome" name="nome" id="nome">
+                <label for="email">email</label>
+                <input type="email" name="email" id="email">
+                <label for="senha">senha</label>
+                <input type="password" name="senha" id="senha">
+                <label for="senha-confirmada">confirme a senha</label>
+                <input type="password" name="senha-confirmada" id="senha-confirmada">
+                <select name="tipo" id="tipo">
+                    <option value="ADMINISTRADOR">ORGANIZADOR</option>
+                    <option value="CLIENTE">CLIENTE</option>
+                </select>
+                <button type="submit">CADASTRAR</button>
+            </form>
+        </div>
+    </main>
+    <script type="module" src="../js/cadastro.js"></script></body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/pages/eventos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gajraj+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Coda:wght@400;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="overlay">
+        <a href="../index.html"><header>
+            <img src="../assets/imgs/logo.png" alt="">
+            <h1>Eventos</h1>
+        </header></a>
+
+        <main>
+            <h2>MEUS EVENTOS</h2>
+            <button id="adicionar-evento">+</button>
+            <div class="ingressos"></div>
+        </main>
+    </div>
+
+    
+    <div class="modal">
+        <form id="form-evento">
+            <label for="nome">nome</label>
+            <input type="text" name="nome" id="nome">
+            <label for="data">data</label>
+            <input type="date" name="data" id="data">
+            <label for="horario">horario</label>
+            <input type="datetime" name="horario" id="horario">
+            <label for="cep">cep</label>
+            <input type="text" name="cep" id="cep">
+            <div class="cep1">
+                <label for="rua">rua</label>
+                <input type="text" name="rua" id="rua">
+                <label for="bairro">bairro</label>
+                <input type="text" name="bairro" id="bairro">
+            </div>
+
+            <div class="cep2">
+                <label for="cidade">cidade</label>
+                <input type="text" name="cidade" id="cidade">
+                <label for="estado">estado</label>
+                <input type="text" name="estado" id="estado">
+            </div>
+
+            <label for="valor">valor</label>
+            <input type="number" name="valor" id="valor">
+            <label for="imagem">imagem</label>
+            <input type="file" name="imagem" id="imagem">
+            <button id="input-dados"></button>
+        </form>
+    </div>
+    <script src="../js/eventos.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+node_modules
+volumes
+/generated/prisma
+tmp/*
+.env
+prisma/migrations
+!tmp/.gitkeep

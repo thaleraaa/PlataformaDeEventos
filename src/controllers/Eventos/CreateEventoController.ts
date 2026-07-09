@@ -1,0 +1,22 @@
+import { Request, Response } from "express";
+import { CreateEventoService } from "../../services/Eventos/CreateEventoService";
+import { CreateEventoRequest } from "../../models/interfaces/Eventos/CreateEventoRequest";
+
+class CreateEventoController {
+    async handle (request: Request, response: Response) {
+        const {nome, data, horario, valor, rua, bairro, cidade, estado} : CreateEventoRequest = request.body;
+        const user_id = request.user_id;
+        const createEventoService = new CreateEventoService();
+
+
+        if(!request.file) {
+            throw new Error ("Error sending image");
+        } else {
+            const { originalname, filename: imagem} = request.file;
+            const evento = await createEventoService.execute({nome, data, horario, valor, imagem, user_id, rua, bairro, cidade, estado});
+            return response.status(201).json(evento);
+        }
+    }
+}
+
+export { CreateEventoController }
